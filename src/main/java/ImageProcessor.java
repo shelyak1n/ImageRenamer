@@ -86,7 +86,12 @@ public class ImageProcessor {
         if (currentImageFile != null) {
             String originalFileName = currentImageFile.getName();
             String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
-            String newFileName = option1 + ". " + option2 + ". " + text + extension;
+            String newFileName;
+            if (text.equals("")) {
+                newFileName = option1 + ". " + option2 + extension;
+            } else {
+                newFileName = option1 + ". " + option2 + ". " + text + extension;
+            }
 
             // Проверяем наличие файла с таким именем в директории
             File newFile = new File(currentImageFile.getParentFile(), newFileName);
